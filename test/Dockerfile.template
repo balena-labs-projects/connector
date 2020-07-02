@@ -1,0 +1,9 @@
+FROM balenalib/%%BALENA_MACHINE_NAME%%-alpine-python:3.7.7-build
+
+WORKDIR /app
+
+RUN pip3 install paho-mqtt
+
+COPY . /app
+
+ENTRYPOINT [ "python", "-u", "main.py" ]

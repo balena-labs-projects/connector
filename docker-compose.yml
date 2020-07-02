@@ -1,0 +1,58 @@
+  
+version: '2'
+
+volumes:
+  conf:
+  data:
+services:
+  telegraf:
+    image: telegraf@sha256:c49de7078369915b8db3410721714bc1b2f3f86b279b560aefb6adf8d2915413
+    container_name: telegraf
+    restart: always
+    network_mode: "host"
+    cap_add:
+      - SYS_ADMIN
+    labels:
+      io.balena.features.balena: '1'
+    volumes: 
+      - 'conf:/data/conf'
+    command: --config http://localhost:9099
+  mqtt:
+    image: arm32v6/eclipse-mosquitto
+    ports:
+      - "1883:1883"
+    restart: always
+    network_mode: "host"
+  influxdb:
+    image: influxdb@sha256:73f876e0c3bd02900f829d4884f53fdfffd7098dd572406ba549eed955bf821f
+    container_name: influxdb
+    restart: always
+    network_mode: "host"
+    ports:
+      - 8086:8086
+    environment:
+      - INFLUXDB_DB=balena
+      - INFLUXDB_USER=balena
+      - INFLUXDB_ADMIN_ENABLED=true
+      - INFLUXDB_ADMIN_USER=admin
+      - INFLUXDB_ADMIN_PASSWORD=admin
+    volumes:
+      - 'data:/data'
+  grafana:
+    image: grafana/grafana@sha256:54176fd52dcc632192fa5419316814b2afd13a33f1d8edb1d12d94139a24f963
+    container_name: grafana
+    restart: always
+    ports:
+      - "80"
+  test:
+    build: ./test
+    restart: always
+    network_mode: "host"
+  autowire:
+    build: ./autowire
+    restart: always
+    network_mode: "host"
+    labels:
+      io.balena.features.balena: '1'
+    ports:
+      - 9099:9099
