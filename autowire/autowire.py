@@ -7,6 +7,7 @@ from http.server import HTTPServer, BaseHTTPRequestHandler
 
 class AutoWire():
   balena = ""
+  services = None
 
   def __init__(self, balena):
     self.balena = balena
@@ -18,16 +19,30 @@ class AutoWire():
 
   ### Gets the services running on the device from the release definition ###
   def GetServices(self):
-    # Use the device UUID to get the device model
-    device_id = os.environ.get('BALENA_DEVICE_UUID')
-    device = self.balena.models.device.get_with_service_details(device_id, False)
-    # get the commit the device is on
-    commit = device["is_on__commit"]
-    # use the commit to get the release the device is on
-    release = self.balena.models.release.get(commit)
-    # use the release to find the services configured
-    services = release["composition"]["services"].keys()
-    return services
+    if self.services is None:
+      # Use the device UUID to get the device model
+      device_id = os.environ.get('BALENA_DEVICE_UUID')
+      device = self.balena.models.device.get_with_service_details(device_id, False)
+      # get the commit the device is on
+      commit = device["is_on__commit"]
+      # use the commit to get the release the device is on
+      release = self.balena.models.release.get(commit)
+      # use the release to find the services configured
+      self.services = release["composition"]["services"]
+
+    return self.services
+
+  def FindPullDataSources(self):
+    outputDict = {}
+
+    if self.services is None:
+      self.GetServices()
+    
+    for service, details in self.services.items():
+      if "expose" in details.keys():
+        outputDict[service] = details["expose"]
+    
+    return outputDict
 
   ### Loads the plugins and passes the service list to each one ###
   ### A plugin outputs it's config only if there is an entry in ###
@@ -44,12 +59,11 @@ class AutoWire():
     for plugin_name in plugin_source.list_plugins():
       plugin = plugin_source.load_plugin(plugin_name)
       # Add each plugin output to the config string we're building
-      config = (config + str(plugin.invoke(self.GetServices())))
+      config = (config + str(plugin.invoke(self.GetServices().keys())))
     
     return config
 
   ### Get the input config ###
-  # TODO: expand this to auto-detect pull data sources
   def GetInputConfig(self):
     output = """
   [[inputs.mqtt_consumer]]
@@ -59,6 +73,21 @@ class AutoWire():
 
     data_format = "json"
     """
+
+    pullDataSources = self.FindPullDataSources()
+    if len(pullDataSources) > 0:
+      for service, port in pullDataSources.items():
+        sourceConf = """
+  [[inputs.http]]
+  urls = [
+    "http://{service}:{port}"
+  ]
+
+  timeout = "1s"
+  data_format = "json"
+      """.format(service=service, port=port[0])
+        output = (output + sourceConf)
+
     return output
 
 ### HTTP server for telegraf config endpoint ###
