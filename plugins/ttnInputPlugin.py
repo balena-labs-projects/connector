@@ -7,7 +7,7 @@ def invoke(services):
 
 def getConfigSection():
     output = """
-[[inputs.externalHttpListener]]
+[[inputs.http_listener_v2]]
   service_address = ":8080"
   methods = ["POST"]
   path = "/"
