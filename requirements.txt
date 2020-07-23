@@ -1,0 +1,4 @@
+wheel
+balena-sdk==9.5.0
+PluginBase
+toml

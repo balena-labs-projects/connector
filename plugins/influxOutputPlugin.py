@@ -2,8 +2,8 @@ import os
 
 SERVICE_NAME = "influxdb"
 
-def invoke(serviceList):
-    if(SERVICE_NAME in serviceList):
+def invoke(services):
+    if(SERVICE_NAME in services.keys()):
         print("Loading {name} plugin".format(name=SERVICE_NAME))
         return getConfigSection()
 
@@ -17,6 +17,6 @@ def getConfigSection():
     urls = ["{url}"]
     database = "{db}"
     timeout = "{to}"
-        """.format(url=host, db=database, to=timeout)
+    """.format(url=host, db=database, to=timeout)
 
         return output

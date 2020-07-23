@@ -1,8 +1,0 @@
-FROM balenalib/%%BALENA_MACHINE_NAME%%-alpine-python:3.7.7-build
-
-WORKDIR /app
-COPY . /app
-
-RUN pip3 install -r requirements.txt
-
-ENTRYPOINT [ "python", "-u", "autowire.py" ]
