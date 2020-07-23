@@ -51,7 +51,7 @@ class AutoWire():
 
 # Authenticate with balenaCloud
 balena = Balena()
-auth_token = os.environ.get('AUTH_TOKEN') or sys.exit("No AUTH_TOKEN device variable set. Cannot authenticate with balenaCloud")
+auth_token = os.environ.get('BALENA_API_KEY') or sys.exit("No AUTH_TOKEN device variable set. Cannot authenticate with balenaCloud")
 balena.auth.login_with_token(auth_token)
 
 # Create the autowire class
