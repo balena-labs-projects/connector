@@ -9,7 +9,7 @@ def invoke(services):
 
 def getConfigSection():
         host = os.environ.get('INFLUXDB_HOST') or "http://{service}:8086".format(service=SERVICE_NAME)
-        database = os.environ.get('INFLUXDB_DATABASE') or "balena"
+        database = os.environ.get('INFLUXDB_DB') or "balena"
         timeout = os.environ.get('INFLUXDB_TIMEOUT') or "1s"
 
         output = """
