@@ -146,7 +146,7 @@ Place this key into an environment variable on your balena device called `APPLIC
 
 You can now view the data by pointing Azure Monitor to your Application Insights account and charting the correct metrics:
 
-[Screenshot TBC]
+![alt text](https://i.ibb.co/6r61Ykg/azure.jpg "Azure AppInsights")
 
 ## Customisation
 ### Extend image configuration
