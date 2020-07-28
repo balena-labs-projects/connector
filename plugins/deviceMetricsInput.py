@@ -12,6 +12,8 @@ def getConfigSection():
     output = """
 [[inputs.mem]]
 
+[[inputs.temp]]
+
 [[inputs.cpu]]
   percpu = true
   totalcpu = true
