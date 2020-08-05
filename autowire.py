@@ -27,6 +27,20 @@ class AutoWire():
 
     return self.services
 
+  ### Returns a default input section (device temp) if
+  ### no input sections have been created by plugins.
+  ### (i.e. no input sources configured or discovered) 
+  def GenerateDefaultInputConfig(self, config):
+    section = "[[inputs.temp]]"
+
+    if('inputs' not in toml.loads(config).keys()):
+      return section
+    
+    if(len(toml.loads(config)['inputs']) == 0):
+      return section
+    
+    return None
+
   ### Loads the plugins and passes the service list to each one ###
   ### A plugin outputs it's config only if there is an entry in ###
   ### the list for the backend service it configures            ###
@@ -47,6 +61,11 @@ class AutoWire():
       if(section is not None):
         config = (config + str(section))
     
+    defaultSection = self.GenerateDefaultInputConfig(config)
+    if(defaultSection is not None):
+      print("No data sources configured or detected. Enabling default: device temperature.")
+      config = (config + str(defaultSection))
+
     return config
 
 # Authenticate with balenaCloud

@@ -21,6 +21,7 @@ def invoke(services):
     pullDataSources = FindPullDataSources(services)
     if len(pullDataSources) > 0:
         for service, port in pullDataSources.items():
+            print("Adding {service} internal HTTP source".format(service=service))
             sourceConf = """[[inputs.http]]
     urls = [
     "http://{service}:{port}"
