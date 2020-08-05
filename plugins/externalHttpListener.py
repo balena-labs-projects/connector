@@ -3,9 +3,13 @@ import os
 SERVICE_NAME = "External Http Listener"
 
 def invoke(services):
-    name = os.environ.get('EXTERNAL_HTTP_LISTENER_NAME') or "ExternalHttpListener"
-    if((os.environ.get('ENABLE_EXTERNAL_HTTP_LISTENER') or '0') != '1'):
-        return None
+    name = os.environ.get('EXTERNAL_HTTP_LISTENER_NAME')
+
+    if(name is None):
+        name = "ExternalHttpListener"
+        if((os.environ.get('ENABLE_EXTERNAL_HTTP_LISTENER') or '0') != '1'):
+            return None
+    
     print("Loading {name} plugin".format(name=SERVICE_NAME))
     return getConfigSection(name)    
 
@@ -20,8 +24,9 @@ def getConfigSection(name):
   name_override = "{name}"
 """.format(name=name)
 
-    if((os.environ.get('EXTERNAL_HTTP_LISTENER_JSON_QUERY') or '0') is '1'):
-        jsonQuerySection = """json_query = "payload_fields" """
+    json_query = os.environ.get('EXTERNAL_HTTP_LISTENER_JSON_QUERY')
+    if(json_query is not None):
+        jsonQuerySection = """json_query = "{value}" """.format(value=json_query)
         output = output + jsonQuerySection
 
     return output

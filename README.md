@@ -117,6 +117,8 @@ This type of data source pushes to your device. It is configured by enabling a b
 
 Again, the resulting data source can be given a custom name (as above) by setting the `EXTERNAL_HTTP_LISTENER_NAME` variable.
 
+Additionally, you sometimes need to specify a `json_query` path - which effectively limits the portion of the JSON document being parsed. This path can be specified with the `EXTERNAL_HTTP_LISTENER_JSON_QUERY` variable. 
+
 ### Device Metrics
 This data source provides the in-built telegraf metrics for the CPU and Memory usage of the device. It is enabled by setting the environment variable `ENABLE_DEVICE_METRICS` to `1`.
 
