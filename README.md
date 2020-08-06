@@ -166,7 +166,7 @@ CMD ["--config customTelegraf.conf"]
 
 This will stop the auto-wiring code from running and cause telegraf to be run purely from the supplied configuration file.
 
-##Troubleshooting
+## Troubleshooting
 
 You can turn on telegraf debugging by setting the environment variable `DEBUG` to `1`. This turns on debug logging to the console.
 
