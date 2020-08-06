@@ -3,3 +3,12 @@
 autowire/plugins/__pycache__/balena_influx.cpython-36.pyc
 
 telegraf.conf
+plugins/__pycache__/applicationInsightsOutput.cpython-36.pyc
+plugins/__pycache__/baseConfig.cpython-36.pyc
+plugins/__pycache__/deviceMetricsInput.cpython-36.pyc
+plugins/__pycache__/externalHttpListener.cpython-36.pyc
+plugins/__pycache__/externalHttpPullInput.cpython-36.pyc
+plugins/__pycache__/httpOutput.cpython-36.pyc
+plugins/__pycache__/influxOutput.cpython-36.pyc
+plugins/__pycache__/internalHttpPullInput.cpython-36.pyc
+plugins/__pycache__/mqttInput.cpython-36.pyc
