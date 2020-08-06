@@ -1,4 +1,6 @@
-FROM balenalib/%%BALENA_MACHINE_NAME%%-alpine-python:3-build as build  
+FROM balenalib/genericx86-64-ext-alpine-python:3-build as build
+
+LABEL org.opencontainers.image.source="https://github.com/balenablocks/transport/"
 
 RUN mkdir /install
 WORKDIR /install
@@ -7,7 +9,7 @@ COPY requirements.txt /requirements.txt
 ENV PATH=/root/.local/bin:$PATH
 RUN pip3 install --user -r /requirements.txt
 
-FROM balenalib/%%BALENA_MACHINE_NAME%%-alpine-python:3-run 
+FROM balenalib/genericx86-64-ext-alpine-python:3-run 
 COPY --from=build /root/.local /root/.local
 ENV PATH=/root/.local/bin:$PATH
 
@@ -18,6 +20,6 @@ RUN chmod +x /app/*.sh
 RUN install_packages wget tar
 
 # download and install telegraf for the ARCH
-RUN /app/download.sh "%%BALENA_ARCH%%"
+RUN /app/download.sh "genericx86-64-ext"
 
 ENTRYPOINT ["bash", "/app/entry.sh"]
