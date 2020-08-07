@@ -8,6 +8,7 @@ def invoke(services):
 def getConfigSection():
     output = """
 [[inputs.mqtt_consumer]]
+servers = ["mqtt:1883"]
 topics = [
     "sensors/#",
 ]
