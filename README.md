@@ -22,7 +22,7 @@ version: '2.1'
 
 services:
   transport:
-    image: phildwilson/balenalabs-transport:raspberrypi4-64
+    image: balenaplayground/balenalabs-transport:raspberrypi4-64
     restart: always
     labels:
       io.balena.features.balena-api: '1' # necessary to discover services
@@ -54,7 +54,7 @@ services:
 *dockerfile.template*
 
 ```dockerfile
-FROM phildwilson/balenalabs-transport:%%BALENA_MACHINE_NAME%%
+FROM balenaplayground/balenalabs-transport:%%BALENA_MACHINE_NAME%%
 ```
 
 ## Supported devices
