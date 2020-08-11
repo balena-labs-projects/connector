@@ -20,6 +20,7 @@ def invoke(services):
     output = ""
     pullDataSources = FindPullDataSources(services)
     if len(pullDataSources) > 0:
+        timeout = os.environ.get('INTERNAL_HTTP_TIMEOUT') or '2'
         for service, port in pullDataSources.items():
             print("Adding {service} internal HTTP source".format(service=service))
             sourceConf = """[[inputs.http]]
@@ -27,10 +28,10 @@ def invoke(services):
     "http://{service}:{port}"
     ]
 
-    timeout = "1s"
+    timeout = "{timeout}s"
     data_format = "json"
     name_override = "{service}"
-""".format(service=service, port=port[0])
+""".format(service=service, port=port[0], timeout=timeout)
             output = (output + sourceConf)
 
     return output
