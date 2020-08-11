@@ -80,6 +80,8 @@ This type of data source runs it's own HTTP server and provides data readings as
 ```
 The `transport` block will find this service and configure telegraf to periodically pull from it via HTTP.
 
+The default timeout for retrieving data is 2 seconds. You can change this by setting `INTERNAL_HTTP_TIMEOUT` to the number of seconds (e.g. `4`).
+
 ### MQTT
 By adding an MQTT broker to an application, you can push data into the `transport` block. Add your broker such as:
 
