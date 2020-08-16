@@ -12,12 +12,15 @@ COPY --from=build /root/.local /root/.local
 ENV PATH=/root/.local/bin:$PATH
 
 WORKDIR /app
-COPY . /app
-RUN chmod +x /app/*.sh
+COPY ./*.sh ./
+RUN chmod +x *.sh
 
 RUN install_packages wget tar
 
 # download and install telegraf for the ARCH
 RUN /app/download.sh "%%BALENA_ARCH%%"
+
+COPY ./plugins ./plugins/
+COPY ./autowire.py .
 
 ENTRYPOINT ["bash", "/app/entry.sh"]

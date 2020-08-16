@@ -110,7 +110,10 @@ This type of source is pulled from a provide via the internet. It is enabled by 
 
 ![alt text](https://i.ibb.co/z4MVcxw/External-HTTPConfig.jpg "balenaCloud device service variable")
 
-Setting the vaiable `EXTERNAL_HTTP_PULL_NAME` (as above) allows you to rename the resulting data source, otherwise it will appear in your data sinks (see below) as `inputs.http`
+Setting the vaiable `EXTERNAL_HTTP_PULL_NAME` (as above) allows you to rename the resulting data source, otherwise it will appear in your data sinks (see below) as `inputs.http`.
+
+#### Headers
+Some HTTP APIs that you might like to use with `EXTERNAL_HTTP_PULL` will require authorization. For that reason you can pass additional parameters using the format `EXTERNAL_HTTP_PULL_HEADER_<header-name>`. For example: `EXTERNAL_HTTP_PULL_HEADER_Authorization` could be set to `Basic: YWxhZGRpbjpvcGVuc2VzYW1l`.
 
 ### External HTTP PUSH
 This type of data source pushes to your device. It is configured by enabling a built-in HTTP listener with the environment variable `ENABLE_EXTERNAL_HTTP_LISTENER` set to `1`:
