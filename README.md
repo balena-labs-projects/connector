@@ -115,6 +115,40 @@ Setting the vaiable `EXTERNAL_HTTP_PULL_NAME` (as above) allows you to rename th
 #### Headers
 Some HTTP APIs that you might like to use with `EXTERNAL_HTTP_PULL` will require authorization. For that reason you can pass additional parameters using the format `EXTERNAL_HTTP_PULL_HEADER_<header-name>`. For example: `EXTERNAL_HTTP_PULL_HEADER_Authorization` could be set to `Basic: YWxhZGRpbjpvcGVuc2VzYW1l`.
 
+#### String fields
+By default any string fields recieved from a HTTP API are ignored. For any fields you want to be brought in you will need to specify them in a variable called `EXTERNAL_HTTP_PULL_STRINGS_FIELDS` as a comma-separated list. Here's a worked example:
+
+Say my weather HTTP API brings in the following JSON:
+
+```json
+{
+   "timezone":3600,
+   "id":2643743,
+   "name":"London",
+   "cod":200
+    "sys":{
+      "type":1,
+      "id":1414,
+      "country":"GB",
+      "sunrise":1597726289,
+      "sunset":1597778246
+   },
+   "weather":[
+      {
+         "id":802,
+         "main":"Clouds",
+         "description":"scattered clouds",
+         "icon":"03d"
+      }
+   ]  
+}
+```
+In that example, to bring in the "name" field so that "London" appears in my data, I need to add `name` to my `EXTERNAL_HTTP_PULL_STRINGS_FIELDS` variable.
+<br/>However, because the "country" element is nested within the "sys" element, I need to using some notation to specify that JSON path, like this `sys_country`.
+<br/>Notice also that the "weather" element has an array of nested elements, including a description of the weather. To get that description I'll need to specify the path (like above), but I also need to specify the index of the array element, in this case "0". So I'll add `weather_0_description` to my environment variable. All together that will look like this:
+
+![alt text](https://i.ibb.co/q5spmsw/external-Http-String-Fields.jpg "json string fields")
+
 ### External HTTP PUSH
 This type of data source pushes to your device. It is configured by enabling a built-in HTTP listener with the environment variable `ENABLE_EXTERNAL_HTTP_LISTENER` set to `1`:
 

@@ -13,10 +13,7 @@ def invoke(services):
 def getConfigSection(url, name):
     output = """
 [[inputs.http]]
-  ## One or more URLs from which to read formatted metrics
-  urls = [
-    "{url}"
-  ]
+  urls = ["{url}"]
   method = "GET"
   data_format = "json"
   name_override = "{name}"
@@ -32,5 +29,27 @@ def getConfigSection(url, name):
     if headers_found == True:
       output = output + "  [inputs.http.headers]\n"
       output = output + headers
+
+    json_query = os.environ.get('EXTERNAL_HTTP_PULL_JSON_QUERY')
+    if(json_query is not None):
+        jsonQuerySection = """ json_query = "{value}" """.format(value=json_query)
+        output = output + jsonQuerySection
+    
+    string_fields = os.environ.get('EXTERNAL_HTTP_PULL_STRINGS_FIELDS')
+    splitFields = string_fields.split(",")
+    fields = ""
+    fieldList = ""
+
+    for field in splitFields:
+      field = field.strip().strip('\"')
+      field = "\"" + field + "\","
+
+      fieldList = fieldList + field
+
+      string_fields = fieldList
+
+    if(string_fields is not None):
+        stringFieldsSection = """ json_string_fields = [{value}] """.format(value=string_fields)
+        output = output + stringFieldsSection
 
     return output

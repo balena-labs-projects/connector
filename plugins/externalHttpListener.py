@@ -28,5 +28,21 @@ def getConfigSection(name):
     if(json_query is not None):
         jsonQuerySection = """json_query = "{value}" """.format(value=json_query)
         output = output + jsonQuerySection
+    
+    string_fields = os.environ.get('EXTERNAL_HTTP_LISTENER_STRINGS_FIELDS')
+    splitFields = string_fields.split(",")
+    fields = ""
+    fieldList = ""
+
+    for field in splitFields:
+      field = field.strip().strip('\"')
+      field = "\"" + field + "\","
+
+      fieldList = fieldList + field
+
+      string_fields = fieldList
+    if(string_fields is not None):
+        stringFieldsSection = """json_string_fields = "[{value}]" """.format(value=string_fields)
+        output = output + stringFieldsSection
 
     return output
