@@ -75,6 +75,8 @@ balena.auth.login_with_token(auth_token)
 
 # Create the autowire class
 autowire = AutoWire(balena)
+print("balenablocks/connector")
+print("----------------------")
 print('Intelligently connecting data sources with data sinks')
 # Get the config and write to to the file.
 config = autowire.GetConfig()

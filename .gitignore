@@ -23,3 +23,4 @@ plugins/__pycache__/httpOutput.cpython-36.pyc
 plugins/__pycache__/influxOutput.cpython-36.pyc
 plugins/__pycache__/internalHttpPullInput.cpython-36.pyc
 plugins/__pycache__/mqttInput.cpython-36.pyc
+Dockerfile.raspberrypi4-64

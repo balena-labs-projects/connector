@@ -1,7 +1,7 @@
-# balena-blocks/transport
+# balena-blocks/connector
 
 Intelligently connect data sources with data sinks in block-based balena applications.
-The `transport` block is a docker image that runs [telegraf](https://www.influxdata.com/time-series-platform/telegraf/) and code to find other services running on the device, and intelligently connect them.
+The `connector` block is a docker image that runs [telegraf](https://www.influxdata.com/time-series-platform/telegraf/) and code to find other services running on the device, and intelligently connect them.
 
 ## Features
 
@@ -21,8 +21,8 @@ To use this image, create a container in your `docker-compose.yml` file as shown
 version: '2.1'
 
 services:
-  transport:
-    image: balenaplayground/balenalabs-transport:raspberrypi4-64
+  connector:
+    image: balenablocks/connector:raspberrypi4-64
     restart: always
     labels:
       io.balena.features.balena-api: '1' # necessary to discover services
@@ -42,7 +42,7 @@ volumes:
 
 services:
 
-  transport:
+  connector:
     build: ./
     restart: always
     labels:
@@ -54,11 +54,11 @@ services:
 *dockerfile.template*
 
 ```dockerfile
-FROM balenaplayground/balenalabs-transport:%%BALENA_MACHINE_NAME%%
+FROM balenablocks/connector:%%BALENA_MACHINE_NAME%%
 ```
 
 ## Supported devices
-The `transport` block has been tested to work on the following devices:
+The `connector` block has been tested to work on the following devices:
 
 | Device Type  | Status |
 | ------------- | ------------- |
@@ -78,12 +78,12 @@ This type of data source runs it's own HTTP server and provides data readings as
     expose:
       - '7575'
 ```
-The `transport` block will find this service and configure telegraf to periodically pull from it via HTTP.
+The `connector` block will find this service and configure telegraf to periodically pull from it via HTTP.
 
 The default timeout for retrieving data is 2 seconds. You can change this by setting `INTERNAL_HTTP_TIMEOUT` to the number of seconds (e.g. `4`).
 
 ### MQTT
-By adding an MQTT broker to an application, you can push data into the `transport` block. Add your broker such as:
+By adding an MQTT broker to an application, you can push data into the `connector` block. Add your broker such as:
 
 ```yaml
 mqtt:
@@ -92,7 +92,7 @@ mqtt:
       - "1883:1883"
     restart: always
 ```
-As long as you call the service `mqtt` the `transport` block will automatically find it and configure telegraf to pull data from the broker. Ensure the data is formatted as `json` strings. Telegraf will be configured to only pull from the `sensors` topic, so any other data you may wish to put onto the MQTT broker will not be stored (e.g. control or signalling messages).
+As long as you call the service `mqtt` the `connector` block will automatically find it and configure telegraf to pull data from the broker. Ensure the data is formatted as `json` strings. Telegraf will be configured to only pull from the `sensors` topic, so any other data you may wish to put onto the MQTT broker will not be stored (e.g. control or signalling messages).
 
 *Example code:*
 ```python
@@ -106,7 +106,7 @@ while(True):
 ```
 
 ### External HTTP Pull
-This type of source is pulled from a provide via the internet. It is enabled by adding an environment variable to the `transport` service called `EXTERNAL_HTTP_PULL_URL` and setting it to the URL of the source:
+This type of source is pulled from a provide via the internet. It is enabled by adding an environment variable to the `connector` service called `EXTERNAL_HTTP_PULL_URL` and setting it to the URL of the source:
 
 ![alt text](https://i.ibb.co/z4MVcxw/External-HTTPConfig.jpg "balenaCloud device service variable")
 
@@ -161,11 +161,11 @@ Additionally, you sometimes need to specify a `json_query` path - which effectiv
 ### Device Metrics
 This data source provides the in-built telegraf metrics for the CPU and Memory usage of the device. It is enabled by setting the environment variable `ENABLE_DEVICE_METRICS` to `1`.
 
-This data source is useful for testing `transport` or simply to allow device resource monitoring as part of your application.
+This data source is useful for testing `connector` or simply to allow device resource monitoring as part of your application.
 
 ## Data Sinks
 ### InfluxDB
-Adding an influx timeseries database to your application will cause the `transport` block to configure telegraf to push data into it. You must name the service `influxdb` for it to be automatically discovered, such as:
+Adding an influx timeseries database to your application will cause the `connector` block to configure telegraf to push data into it. You must name the service `influxdb` for it to be automatically discovered, such as:
 
 ```yaml
 influxdb:
@@ -192,11 +192,11 @@ You can now view the data by pointing Azure Monitor to your Application Insights
 ## Customisation
 ### Extend image configuration
 
-By default the `transport` block creates a telegraf configuration file from the combination of discovered services and device environment variables. However for custom configurations you can overload the `CMD` directive, as such:
+By default the `connector` block creates a telegraf configuration file from the combination of discovered services and device environment variables. However for custom configurations you can overload the `CMD` directive, as such:
 
 *dockerfile.template*
 ```Dockerfile
-FROM balenaplayground/balenalabs-browser:%%BALENA_MACHINE_NAME%%
+FROM balenablocks/connector:%%BALENA_MACHINE_NAME%%
 
 COPY customTelegraf.conf .
 
