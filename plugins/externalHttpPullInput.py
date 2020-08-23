@@ -11,13 +11,48 @@ def invoke(services):
     return getConfigSection(url, name)    
 
 def getConfigSection(url, name):
+    splitUrls = url.split(",")
+    urlList = ""
+
+    for singleurl in splitUrls:
+      singleurl = singleurl.strip().strip('\"')
+      singleurl = "\"" + singleurl + "\","
+
+      urlList = urlList + singleurl
+
+    url = urlList
+
     output = """
 [[inputs.http]]
-  urls = ["{url}"]
+  ## One or more URLs from which to read formatted metrics
+  urls = [
+    {url}
+  ]
   method = "GET"
   data_format = "json"
   name_override = "{name}"
 """.format(url=url, name=name)
+
+    json_query = os.environ.get('EXTERNAL_HTTP_PULL_JSON_QUERY')
+    if(json_query is not None):
+        jsonQuerySection = """  json_query = "{value}"\n""".format(value=json_query)
+        output = output + jsonQuerySection
+    
+    string_fields = os.environ.get('EXTERNAL_HTTP_PULL_STRINGS_FIELDS')
+    if(string_fields is not None):
+      splitFields = string_fields.split(",")
+      fieldList = ""
+
+      for field in splitFields:
+        field = field.strip().strip('\"')
+        field = "\"" + field + "\","
+
+        fieldList = fieldList + field
+
+        string_fields = fieldList
+      
+      stringFieldsSection = """  json_string_fields = [{value}]\n""".format(value=string_fields)
+      output = output + stringFieldsSection
 
     headers_found = False
     headers = ""
@@ -29,27 +64,5 @@ def getConfigSection(url, name):
     if headers_found == True:
       output = output + "  [inputs.http.headers]\n"
       output = output + headers
-
-    json_query = os.environ.get('EXTERNAL_HTTP_PULL_JSON_QUERY')
-    if(json_query is not None):
-        jsonQuerySection = """ json_query = "{value}" """.format(value=json_query)
-        output = output + jsonQuerySection
-    
-    string_fields = os.environ.get('EXTERNAL_HTTP_PULL_STRINGS_FIELDS')
-    splitFields = string_fields.split(",")
-    fields = ""
-    fieldList = ""
-
-    for field in splitFields:
-      field = field.strip().strip('\"')
-      field = "\"" + field + "\","
-
-      fieldList = fieldList + field
-
-      string_fields = fieldList
-
-    if(string_fields is not None):
-        stringFieldsSection = """ json_string_fields = [{value}] """.format(value=string_fields)
-        output = output + stringFieldsSection
 
     return output
