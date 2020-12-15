@@ -25,7 +25,7 @@ def getConfigSection(server, port):
     
     password = os.environ.get('MQTT_OUTPUT_PASSWORD')
     if(password is not None):
-        passwordSection = """  username = [{value}]\n""".format(value=password)
+        passwordSection = """  password = [{value}]\n""".format(value=password)
         output = output + passwordSection
 
     return output
