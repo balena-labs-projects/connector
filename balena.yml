@@ -1,0 +1,18 @@
+version: "2"
+slug: "connector"
+name: "connector"
+type: "balena.block"
+assets:
+  - url: "https://github.com/balenablocks/connector"
+    name: "repository"
+  - url: "https://raw.githubusercontent.com/balenablocks/connector/master/logo.png"
+    name: "logo"
+data:
+  description: "Intelligently connect data sources with data sinks."
+  defaultDeviceType: "raspberrypi3"
+  supportedDeviceTypes:
+    - "raspberrypi4-64"
+    - "fincm3"
+    - "raspberrypi3"
+    - "raspberrypi3-64"
+    - "raspberrypi400-64"
