@@ -1,7 +1,7 @@
 version: "2"
 slug: "connector"
 name: "connector"
-type: "balena.block"
+type: "sw.application"
 assets:
   - url: "https://github.com/balenablocks/connector"
     name: "repository"
