@@ -3,8 +3,11 @@ FROM balenalib/%%BALENA_MACHINE_NAME%%-alpine-python:3-build as build
 RUN mkdir /install
 WORKDIR /install
 
+ENV CRYPTOGRAPHY_DONT_BUILD_RUST=1
+
 COPY requirements.txt /requirements.txt
 ENV PATH=/root/.local/bin:$PATH
+RUN pip3 install wheel
 RUN pip3 install --user -r /requirements.txt
 
 FROM balenalib/%%BALENA_MACHINE_NAME%%-alpine-python:3-run 
@@ -20,6 +23,7 @@ RUN install_packages wget tar
 # download and install telegraf for the ARCH
 RUN /app/download.sh "%%BALENA_ARCH%%"
 
+COPY VERSION .
 COPY ./plugins ./plugins/
 COPY ./autowire.py .
 
