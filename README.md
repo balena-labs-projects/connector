@@ -22,7 +22,7 @@ version: '2.1'
 
 services:
   connector:
-    image: balenablocks/connector:raspberrypi4-64
+    image: balenablocks/connector:latest
     restart: always
     labels:
       io.balena.features.balena-api: '1' # necessary to discover services
