@@ -1,3 +1,5 @@
+import os
+
 SERVICE_NAME = "mqtt"
 
 def invoke(services):
@@ -15,5 +17,21 @@ topics = [
 
 data_format = "json"
 """
+
+    string_fields = os.environ.get('MQTT_INPUT_STRINGS_FIELDS')
+    if(string_fields is not None):
+      splitFields = string_fields.split(",")
+      fieldList = ""
+
+      for field in splitFields:
+        field = field.strip().strip('\"')
+        field = "\"" + field + "\","
+
+        fieldList = fieldList + field
+
+        string_fields = fieldList
+      
+      stringFieldsSection = """  json_string_fields = [{value}]\n""".format(value=string_fields)
+      output = output + stringFieldsSection
 
     return output
