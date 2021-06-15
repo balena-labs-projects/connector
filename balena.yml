@@ -1,6 +1,6 @@
 name: connector
 description: Intelligently connect data sources with data sinks.
-version: 0.0.4
+version: 0.0.5
 type: sw.application
 assets:
   repository:
