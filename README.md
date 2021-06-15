@@ -105,6 +105,9 @@ while(True):
     time.sleep(5)
 ```
 
+#### String fields
+By default any string fields recieved from MQTT are ignored. For any fields you want to be brought in you will need to specify them in a variable called `MQTT_INPUT_STRINGS_FIELDS` as a comma-separated list. See the section HTTP section below for a worked example.
+
 ### External HTTP Pull
 This type of source is pulled from a provide via the internet. It is enabled by adding an environment variable to the `connector` service called `EXTERNAL_HTTP_PULL_URL` and setting it to the URL of the source:
 
