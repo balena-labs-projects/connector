@@ -9,7 +9,7 @@ def FindPullDataSources(services):
       if "expose" in details.keys():
         portNumber = details["expose"]
         if len(portNumber) == 1:
-            if portNumber[0] == pullSourcePort:
+            if portNumber[0].split('/')[0] == pullSourcePort:
                 outputDict[service] = portNumber
     
     return outputDict
@@ -31,7 +31,7 @@ def invoke(services):
     timeout = "{timeout}s"
     data_format = "json"
     name_override = "{service}"
-""".format(service=service, port=port[0], timeout=timeout)
+""".format(service=service, port=port[0].split('/')[0], timeout=timeout)
             output = (output + sourceConf)
 
     return output

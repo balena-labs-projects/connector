@@ -1,3 +1,5 @@
 balena-sdk==9.5.0
 PluginBase
 toml
+requests
+PyJWT==2.1.0
