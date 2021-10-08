@@ -26,6 +26,7 @@ services:
     restart: always
     labels:
       io.balena.features.balena-api: '1' # necessary to discover services
+      io.balena.features.supervisor-api: 1  # necessary to discover services in local mode
     privileged: true # necessary to change container hostname
     ports:
       - "8080" # only necessary if using ExternalHttpListener (see below)
@@ -47,6 +48,7 @@ services:
     restart: always
     labels:
       io.balena.features.balena-api: '1' # necessary to discover services
+      io.balena.features.supervisor-api: 1  # necessary to discover services in local mode
     privileged: true # necessary to change container hostname
     ports:
       - "8080" # only necessary if using ExternalHttpListener (see below)
