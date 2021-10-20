@@ -4,6 +4,7 @@ from functools import partial
 from pluginbase import PluginBase
 from balena import Balena
 import toml
+import requests
 
 class AutoWire():
   balena = ""
@@ -15,15 +16,25 @@ class AutoWire():
    ### Gets the services running on the device from the release definition ###
   def GetServices(self):
     if self.services is None:
-      # Use the device UUID to get the device model
+      # Use the device UUID to get the device model and check device mode
       device_id = os.environ.get('BALENA_DEVICE_UUID')
-      device = self.balena.models.device.get_with_service_details(device_id, False)
-      # get the commit the device is on
-      commit = device["is_on__commit"]
-      # use the commit to get the release the device is on
-      release = self.balena.models.release.get(commit)
-      # use the release to find the services configured
-      self.services = release["composition"]["services"]
+      local_mode = balena.models.device.is_in_local_mode(device_id)
+      
+      if local_mode:
+        supervisor_address = os.environ.get('BALENA_SUPERVISOR_ADDRESS')
+        r = requests.get(supervisor_address + '/v2/local/target-state')
+        services = r.json()["state"]["local"]["apps"]["1"]["services"]
+        self.services = {}
+        for service in services:
+          self.services[service.get("serviceName")] = service.get("config")
+      else:
+        device = self.balena.models.device.get_with_service_details(device_id, False)
+        # get the commit the device is on
+        commit = device["is_on__commit"]
+        # use the commit to get the release the device is on
+        release = self.balena.models.release.get(commit)
+        # use the release to find the services configured
+        self.services = release["composition"]["services"]
 
     return self.services
 
