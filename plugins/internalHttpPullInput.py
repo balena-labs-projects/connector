@@ -1,4 +1,7 @@
 import os
+import sys
+sys.path.append(".")
+from helper_methods import helpers
 
 ### Returns the services which expose the ###
 ### pull data source port                 ###
@@ -33,5 +36,12 @@ def invoke(services):
     name_override = "{service}"
 """.format(service=service, port=port[0], timeout=timeout)
             output = (output + sourceConf)
+
+    stringFields = os.environ.get('INTERNAL_HTTP_PULL_STRINGS_FIELDS')
+    if(stringFields is not None):
+        if(stringFields is not None):
+            stringFieldsSection = helpers.formatStringField(stringFields)
+            output = output + stringFieldsSection
+    output = output + stringFieldsSection
 
     return output
