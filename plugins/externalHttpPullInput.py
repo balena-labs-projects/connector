@@ -43,10 +43,8 @@ def getConfigSection(url, name):
     
     stringFields = os.environ.get('EXTERNAL_HTTP_PULL_STRINGS_FIELDS')
     if(stringFields is not None):
-        if(stringFields is not None):
-            stringFieldsSection = helpers.formatStringField(stringFields)
-            output = output + stringFieldsSection
-    output = output + stringFieldsSection
+      stringFieldsSection = helpers.formatStringField(stringFields)
+      output = output + stringFieldsSection
 
     headers_found = False
     headers = ""

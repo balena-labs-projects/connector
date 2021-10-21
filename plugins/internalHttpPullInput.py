@@ -39,9 +39,7 @@ def invoke(services):
 
     stringFields = os.environ.get('INTERNAL_HTTP_PULL_STRINGS_FIELDS')
     if(stringFields is not None):
-        if(stringFields is not None):
-            stringFieldsSection = helpers.formatStringField(stringFields)
-            output = output + stringFieldsSection
-    output = output + stringFieldsSection
+        stringFieldsSection = helpers.formatStringField(stringFields)
+        output = output + stringFieldsSection
 
     return output
