@@ -1,4 +1,8 @@
+import sys
+sys.path.append(".")
+
 import os
+from helper_methods import helpers
 
 SERVICE_NAME = "mqtt"
 
@@ -10,28 +14,18 @@ def invoke(services):
 def getConfigSection():
     output = """
 [[inputs.mqtt_consumer]]
-servers = ["mqtt:1883"]
+servers = ["mqtt://mqtt:1883"]
 topics = [
     "sensors/#",
+    "balena/#"
 ]
 
 data_format = "json"
 """
 
-    string_fields = os.environ.get('MQTT_INPUT_STRINGS_FIELDS')
-    if(string_fields is not None):
-      splitFields = string_fields.split(",")
-      fieldList = ""
-
-      for field in splitFields:
-        field = field.strip().strip('\"')
-        field = "\"" + field + "\","
-
-        fieldList = fieldList + field
-
-        string_fields = fieldList
-      
-      stringFieldsSection = """  json_string_fields = [{value}]\n""".format(value=string_fields)
+    stringFields = os.environ.get('MQTT_INPUT_STRINGS_FIELDS')
+    if(stringFields is not None):
+      stringFieldsSection = helpers.formatStringField(stringFields)
       output = output + stringFieldsSection
 
     return output

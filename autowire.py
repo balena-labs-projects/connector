@@ -1,5 +1,7 @@
 import os
 import sys
+sys.path.append(".")
+sys.path.append("./plugins")
 from functools import partial
 from pluginbase import PluginBase
 from balena import Balena

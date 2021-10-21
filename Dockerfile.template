@@ -25,6 +25,6 @@ RUN /app/download.sh "%%BALENA_ARCH%%"
 
 COPY VERSION .
 COPY ./plugins ./plugins/
-COPY ./autowire.py .
+COPY *.py ./
 
 ENTRYPOINT ["bash", "/app/entry.sh"]
