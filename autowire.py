@@ -30,9 +30,10 @@ class AutoWire():
         for service in services:
           self.services[service.get("serviceName")] = service.get("config")
       else:
-        device = self.balena.models.device.get_with_service_details(device_id, False)
+        device = self.balena.models.device.get_with_service_details(device_id, True)
         # get the commit the device is on
-        commit = device["is_on__commit"]
+        serviceName = os.getenv("BALENA_SERVICE_NAME") or "connector"
+        commit = device["current_services"].get(serviceName)[0]["commit"]
         # use the commit to get the release the device is on
         release = self.balena.models.release.get(commit)
         # use the release to find the services configured
