@@ -14,6 +14,8 @@ def getConfigSection(url):
 [[outputs.http]]
   url = "{url}"
   data_format = "json"
+[outputs.http.headers]
+  Content-Type = "application/json"
 """.format(url=url)
     return output
 
