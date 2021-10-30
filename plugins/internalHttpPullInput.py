@@ -1,4 +1,7 @@
 import os
+import sys
+sys.path.append(".")
+from helper_methods import helpers
 
 ### Returns the services which expose the ###
 ### pull data source port                 ###
@@ -9,7 +12,7 @@ def FindPullDataSources(services):
       if "expose" in details.keys():
         portNumber = details["expose"]
         if len(portNumber) == 1:
-            if portNumber[0] == pullSourcePort:
+            if portNumber[0].split('/')[0] == pullSourcePort:
                 outputDict[service] = portNumber
     
     return outputDict
@@ -31,7 +34,12 @@ def invoke(services):
     timeout = "{timeout}s"
     data_format = "json"
     name_override = "{service}"
-""".format(service=service, port=port[0], timeout=timeout)
+""".format(service=service, port=port[0].split('/')[0], timeout=timeout)
             output = (output + sourceConf)
+
+    stringFields = os.environ.get('INTERNAL_HTTP_PULL_STRINGS_FIELDS')
+    if(stringFields is not None):
+        stringFieldsSection = helpers.formatStringField(stringFields)
+        output = output + stringFieldsSection
 
     return output

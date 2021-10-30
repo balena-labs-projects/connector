@@ -1,4 +1,7 @@
 import os
+import sys
+sys.path.append(".")
+from helper_methods import helpers
 
 SERVICE_NAME = "External Http Listener"
 
@@ -29,20 +32,10 @@ def getConfigSection(name):
         jsonQuerySection = """  json_query = "{value}"\n""".format(value=json_query)
         output = output + jsonQuerySection
     
-    string_fields = os.environ.get('EXTERNAL_HTTP_LISTENER_STRINGS_FIELDS')
-    if(string_fields is not None):
-        splitFields = string_fields.split(",")
-        fieldList = ""
-
-        for field in splitFields:
-            field = field.strip().strip('\"')
-            field = "\"" + field + "\","
-
-            fieldList = fieldList + field
-
-            string_fields = fieldList
-    
-        stringFieldsSection = """  json_string_fields = [{value}]\n""".format(value=string_fields)
-        output = output + stringFieldsSection
+    stringFields = os.environ.get('EXTERNAL_HTTP_LISTENER_STRINGS_FIELDS')
+    if(stringFields is not None):
+        if(stringFields is not None):
+            stringFieldsSection = helpers.formatStringField(stringFields)
+            output = output + stringFieldsSection
 
     return output

@@ -21,7 +21,7 @@ fi
 
 # If command starts with an option, prepend telegraf to it
 if [[ "${1#-}" != "$1" ]]; then
-  set -- telegraf "$@"
+  set -- ./telegraf "$@"
 fi
 
 exec "$@"
