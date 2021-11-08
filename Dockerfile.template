@@ -11,9 +11,13 @@ RUN pip3 install --upgrade pip
 RUN pip3 install --user wheel
 RUN pip3 install --user -r /requirements.txt
 
+RUN python3 --version
+
 FROM balenalib/%%BALENA_MACHINE_NAME%%-alpine-python:3-run 
 COPY --from=build /root/.local /root/.local
 ENV PATH=/root/.local/bin:$PATH
+
+RUN python3 --version
 
 WORKDIR /app
 COPY ./*.sh ./
