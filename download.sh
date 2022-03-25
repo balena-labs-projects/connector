@@ -6,7 +6,7 @@ download_base="https://dl.influxdata.com/telegraf/releases/"
 case $1 in
     "aarch64") package_file="telegraf-${version}_linux_arm64.tar.gz"
        ;;
-    "rpi") package_file="telegraf-${veriosn}_linux_armhf.tar.gz"
+    "rpi") package_file="telegraf-${version}_linux_armhf.tar.gz"
        ;;
     "amd64") package_file="telegraf-${version}_static_linux_amd64.tar.gz"
        ;;
