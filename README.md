@@ -36,13 +36,9 @@ You can also set your `docker-compose.yml` to build a `dockerfile.template` file
 
 *docker-compose.yml:*
 ```yaml
-version: '2'
-
-volumes:
-  settings:                          # Only required if using PERSISTANT flag (see below)
+version: '2.1'
 
 services:
-
   connector:
     build: ./
     restart: always
