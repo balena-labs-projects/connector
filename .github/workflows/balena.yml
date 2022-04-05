@@ -12,7 +12,7 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        fleet: [balenablocks/connector-aarch64, balenablocks/connector-armv7hf]
+        fleet: [balenablocks/connector-aarch64, balenablocks/connector-armv7hf, balenablocks/connector-amd64]
 
     steps:
       - uses: actions/checkout@v3

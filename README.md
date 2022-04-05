@@ -22,7 +22,7 @@ version: '2.1'
 
 services:
   connector:
-    image: balenablocks/connector:latest
+    image: bh.cr/balenablocks/connector-<arch>
     restart: always
     labels:
       io.balena.features.balena-api: '1' # necessary to discover services
@@ -32,7 +32,7 @@ services:
       - "8080" # only necessary if using ExternalHttpListener (see below)
 ```
 
-You can also set your `docker-compose.yml` to build a `dockerfile.template` file, and use the build variable `%%BALENA_MACHINE_NAME%%` so that the correct image is automatically built for your device type (see [supported devices](#Supported-devices)):
+You can also set your `docker-compose.yml` to build a `dockerfile.template` file, and use the build variable `%%BALENA_ARCH%%` so that the correct image is automatically built for your device type (see [supported devices](#Supported-devices)):
 
 *docker-compose.yml:*
 ```yaml
@@ -56,7 +56,7 @@ services:
 *dockerfile.template*
 
 ```dockerfile
-FROM balenablocks/connector:%%BALENA_MACHINE_NAME%%
+FROM bh.cr/balenablocks/connector:%%BALENA_ARCH%%
 ```
 
 ## Supported devices
@@ -66,8 +66,8 @@ The `connector` block has been tested to work on the following devices:
 | ------------- | ------------- |
 | Raspberry Pi 3b+ | ✔ |
 | Raspberry Pi 4 | ✔ |
-| Intel NUC | coming |
-| Generic AMD64 | coming |
+| Intel NUC | ✔ |
+| Generic AMD64 | ✔ |
 </br>
 
 ## Data Sources
