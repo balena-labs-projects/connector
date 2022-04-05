@@ -1,5 +1,32 @@
 name: connector
 description: Intelligently connect data sources with data sinks.
+
+post-provisioning: >-
+  [![balena](https://github.com/balenablocks/connector/actions/workflows/balena.yml/badge.svg)](https://github.com/balenablocks/connector/actions/workflows/balena.yml)
+
+  ## Usage instructions
+
+  Include this snippet in your docker-compose.yml file under 'services':
+    
+    ```
+    browser:
+      image: bhcr.io/balenablocks/connector-<arch> # where <arch> is one of aarch64, armv7hf or amd64
+      restart: always
+      labels:
+        io.balena.features.balena-api: '1' # necessary to discover services
+        io.balena.features.supervisor-api: 1  # necessary to discover services in local mode
+      privileged: true # necessary to change container hostname
+      ports:
+        - "8080" # only necessary if using ExternalHttpListener
+    ```
+
+    To pin to a specific version of this block use:
+
+    ```
+      browser:
+        image: bhcr.io/balenablocks/connector-<arch>/<version>
+        ...
+    ```
 version: 1.1.3
 type: sw.application
 assets:
@@ -19,3 +46,5 @@ data:
     - raspberrypi3
     - raspberrypi3-64
     - raspberrypi400-64
+    - intel-nuc
+    - genericx86-64-ext
