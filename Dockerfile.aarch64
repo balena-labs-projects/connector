@@ -1,0 +1,32 @@
+FROM balenalib/%%BALENA_MACHINE_NAME%%-alpine-python:3.9-build as build  
+
+RUN mkdir /install
+WORKDIR /install
+
+ENV CRYPTOGRAPHY_DONT_BUILD_RUST=1
+RUN install_packages build-base python3-dev py3-setuptools libffi-dev openssl-dev
+
+COPY requirements.txt /requirements.txt
+ENV PATH=/root/.local/bin:$PATH
+RUN pip3 install --upgrade pip
+RUN pip3 install --user wheel
+RUN pip3 install --user -r /requirements.txt
+
+FROM balenalib/%%BALENA_MACHINE_NAME%%-alpine-python:3.9-run 
+COPY --from=build /root/.local /root/.local
+ENV PATH=/root/.local/bin:$PATH
+
+WORKDIR /app
+COPY ./*.sh ./
+RUN chmod +x *.sh
+
+RUN install_packages wget tar
+
+# download and install telegraf for the ARCH
+RUN /app/download.sh "%%BALENA_ARCH%%"
+
+COPY VERSION .
+COPY ./plugins ./plugins/
+COPY *.py ./
+
+ENTRYPOINT ["bash", "/app/entry.sh"]
