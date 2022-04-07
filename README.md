@@ -1,5 +1,7 @@
 # balena-blocks/connector
 
+ [![balena](https://github.com/balenablocks/connector/actions/workflows/balena.yml/badge.svg)](https://github.com/balenablocks/connector/actions/workflows/balena.yml)
+
 Intelligently connect data sources with data sinks in block-based balena applications.
 The `connector` block is a docker image that runs [telegraf](https://www.influxdata.com/time-series-platform/telegraf/) and code to find other services running on the device, and intelligently connect them.
 
@@ -36,13 +38,9 @@ You can also set your `docker-compose.yml` to build a `dockerfile.template` file
 
 *docker-compose.yml:*
 ```yaml
-version: '2'
-
-volumes:
-  settings:                          # Only required if using PERSISTANT flag (see below)
+version: '2.1'
 
 services:
-
   connector:
     build: ./
     restart: always
