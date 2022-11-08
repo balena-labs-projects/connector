@@ -8,11 +8,12 @@ def invoke(services):
 
 def getConfigSection():
     debug = ((os.environ.get('DEBUG') or '0') == '1')
+    interval = os.environ.get('PULL_INTERVAL', '10s')
 
     output = """
-[agent]
-debug = {debug}
-""".format(debug=str(debug)).lower()
+    [agent]
+    debug = {debug}
+    interval = "{interval}"
+    """.format(debug=str(debug), interval=interval).lower()
+
     return output
-
-
