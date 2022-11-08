@@ -193,6 +193,13 @@ You can now view the data by pointing Azure Monitor to your Application Insights
 ![alt text](https://i.ibb.co/6r61Ykg/azure.jpg "Azure AppInsights")
 
 ## Customisation
+
+### Configuring the pull interval
+
+You can change the pull interval for internal and external HTTP endpoints by setting the `PULL_INTERVAL` env variable.
+The default value is `10s`.
+For a list of valid inputs, refer to the [telegraf documentation](https://github.com/influxdata/telegraf/blob/master/docs/CONFIGURATION.md#intervals).
+
 ### Extend image configuration
 
 By default the `connector` block creates a telegraf configuration file from the combination of discovered services and device environment variables. However for custom configurations you can overload the `CMD` directive, as such:
