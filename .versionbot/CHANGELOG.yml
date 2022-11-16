@@ -1,0 +1,551 @@
+- commits:
+    - subject: moving from balenablocks to balena-labs-projects
+      hash: efc2e0fdd27834d090fde5f9acf30386aa38b8a3
+      body: ""
+      footer:
+        Signed-off-by: Flynn Joffray <flynn@balena.io>
+        signed-off-by: Flynn Joffray <flynn@balena.io>
+        Change-type: patch
+        change-type: patch
+      author: Flynn Joffray
+      nested: []
+  version: 1.1.6
+  title: ""
+  date: 2022-11-16T01:20:41.075Z
+- version: 1.1.5
+  date: 2022-04-07T10:09:17Z
+  commits:
+    - hash: 3283d8d52623339722cc867455880721d7042cf1
+      author: Phil Wilson
+      footers:
+        change-type: patch
+        signed-off-by: Phil Wilson <phil@balena.io>
+      subject: fix readme
+      body: null
+    - hash: ce70acdc69f8516ecf16983326199b255a7f2cca
+      author: Phil Wilson
+      footers:
+        change-type: patch
+        signed-off-by: Phil Wilson <phil@balena.io>
+      subject: build not pull
+      body: null
+    - hash: be705e7c821907cdbc3e68dba0718560a420b632
+      author: Phil Wilson
+      footers:
+        change-type: patch
+        signed-off-by: Phil Wilson <phil@balena.io>
+      subject: Update balenaSDK and dependencies
+      body: null
+    - hash: 3fae907f7000e7153ca0c6e3bfbc61d6e656cfa0
+      author: Phil Wilson
+      subject: Merge branch 'master' into fixbuild
+      body: null
+    - hash: 5e94fb05d3b4df00c8156684245cb5a6cb168418
+      author: Phil Wilson
+      footers:
+        change-type: patch
+        signed-off-by: Phil Wilson <phil@balena.io>
+      subject: Fix build for all arches
+      body: null
+    - hash: eef5b600696bdcf95c87e6a171f8dd68440eec60
+      author: Phil Wilson
+      subject: Merge branch 'fixbuild' of https://github.com/balenablocks/connector
+        into fixbuild
+      body: null
+    - hash: e1ffee0ec3643cdeec6617ca998ed9251c111659
+      author: Phil Wilson
+      footers:
+        change-type: patch
+        signed-off-by: Phil Wilson <phil@balena.io>
+      subject: fix aarch64 rust issue
+      body: null
+- version: 1.1.4
+- date: 2022-04-05T10:15:05Z
+- commits:
+    - hash: 933a11715681a0b1bb0ccba3a3db2ea85159e20b
+- commits:
+    - author: Phil Wilson
+- commits:
+    - footers:
+        change-type: patch
+- commits:
+    - footers:
+        signed-off-by: Phil Wilson <phil@balena.io>
+- commits:
+    - subject: Move to GHAction
+- commits:
+    - body: null
+- commits:
+    - hash: b499d2f859c0bfa5a61fdc2178ac0f8d10a2da8d
+- commits:
+    - author: Phil Wilson
+- commits:
+    - footers:
+        change-type: patch
+- commits:
+    - footers:
+        signed-off-by: Phil Wilson <phil@balena.io>
+- commits:
+    - subject: fix action
+- commits:
+    - body: null
+- commits:
+    - hash: a96e3fb79e5c6da15800a4e0cdd6adc1d534927d
+- commits:
+    - author: Phil Wilson
+- commits:
+    - subject: Create balena.yml
+- commits:
+    - body: null
+- version: 1.1.3
+- date: 2022-03-25T14:09:47Z
+- commits:
+    - hash: 134d9c81ff52e52e87b01a71b7056cd9908906c7
+- commits:
+    - author: Bill Love
+- commits:
+    - footers:
+        change-type: patch
+- commits:
+    - subject: Allow x86_64 version
+- commits:
+    - body: Bumped version of telegraf to 1.22.0 and added x86_64 option.
+- commits:
+    - hash: 48c18d9e12ed28c9e335afd232b260479c308d4e
+- commits:
+    - author: Bill Love
+- commits:
+    - subject: Update download.sh
+- commits:
+    - body: null
+- version: 1.1.2
+- date: 2021-11-11T18:27:52Z
+- commits:
+    - hash: 3b6be106432c642787b3ddc299842cfa788b3533
+- commits:
+    - author: Phil Wilson
+- commits:
+    - footers:
+        change-type: patch
+- commits:
+    - footers:
+        signed-off-by: Phil Wilson <phil@balena.io>
+- commits:
+    - subject: fix python image version
+- commits:
+    - body: null
+- version: 1.1.1
+- date: 2021-11-08T18:27:40Z
+- commits:
+    - hash: 92b97ed47711a98f4a182d7a2a7a9d7f518ae7e1
+- commits:
+    - author: Phil Wilson
+- commits:
+    - footers:
+        change-type: patch
+- commits:
+    - footers:
+        signed-off-by: Phil Wilson <phil@balena.io>
+- commits:
+    - subject: fix pi4 image
+- commits:
+    - body: null
+- version: 1.1.0
+- date: 2021-11-02T09:29:01Z
+- commits:
+    - hash: 4af37361f33652f9fa5037afede2a97a4540d068
+- commits:
+    - author: Nutchanon Ninyawee
+- commits:
+    - footers:
+        change-type: minor
+- commits:
+    - footers:
+        signed-off-by: Nutchanon Ninyawee <nutchanon@codustry.com.
+- commits:
+    - subject: Add influx2 autowiring script
+- commits:
+    - body: null
+- commits:
+    - hash: 7c3013182378fb943790a93838dac869d8979f5e
+- commits:
+    - author: Nutchanon Ninyawee
+- commits:
+    - subject: Merge branch 'master' into add-influx-2
+- commits:
+    - body: null
+- version: 1.0.2
+- date: 2021-10-29T13:22:54Z
+- commits:
+    - hash: 3d938f47b4fdd34391c3b3c14a3a55168d32c0fc
+- commits:
+    - author: mcraa
+- commits:
+    - footers:
+        change-type: patch
+- commits:
+    - subject: added Content-Type header to http json output
+- commits:
+    - body: null
+- version: 1.0.1
+- date: 2021-10-21T21:05:51Z
+- commits:
+    - hash: a2906509a102d69771f4d7831c179714d3f98d53
+- commits:
+    - author: Phil Wilson
+- commits:
+    - footers:
+        change-type: patch
+- commits:
+    - footers:
+        signed-off-by: Phil Wilson <phil@balena.io>
+- commits:
+    - subject: Fix bugs and image build failure
+- commits:
+    - body: null
+- version: 1.0.0
+- date: 2021-10-21T14:00:05Z
+- commits:
+    - hash: 78c121d7ff994cac2330d44713fb1557a6632a79
+- commits:
+    - author: Phil Wilson
+- commits:
+    - subject: code cleanup
+- commits:
+    - body: null
+- commits:
+    - hash: 3bf12efef14cde3561340188e3290565e6ef701d
+- commits:
+    - author: Phil Wilson
+- commits:
+    - subject: code cleanup
+- commits:
+    - body: null
+- commits:
+    - hash: 443af46b009595c9b71b2be402c7da0a35d63973
+- commits:
+    - author: Phil Wilson
+- commits:
+    - subject: Merge branch 'code-cleanup' of
+        https://github.com/balenablocks/connector into code-cleanup
+- commits:
+    - body: null
+- commits:
+    - hash: 5c60014f5ce7b90c560a847fe08723cb6c021e94
+- commits:
+    - author: Phil Wilson
+- commits:
+    - footers:
+        change-type: major
+- commits:
+    - footers:
+        signed-off-by: Phil Wilson <phil@balena.io>
+- commits:
+    - subject: code cleanup
+- commits:
+    - body: null
+- version: 0.1.0
+- date: 2021-10-20T08:28:20Z
+- commits:
+    - hash: 0a2810ad65401a93b33fbd7d692f41b38f308f9b
+- commits:
+    - author: Tomás Migone
+- commits:
+    - footers:
+        connects-to: "#5"
+- commits:
+    - footers:
+        closes: "#22, #37"
+- commits:
+    - footers:
+        change-type: minor
+- commits:
+    - footers:
+        signed-off-by: Tomás Migone <tomas@balena.io>
+- commits:
+    - subject: Add support for local mode
+- commits:
+    - body: null
+- commits:
+    - hash: 2e5bef8e10ceb3eda207586d67b7e5c1af993ad6
+- commits:
+    - author: Tomás Migone
+- commits:
+    - footers:
+        connects-to: "#5"
+- commits:
+    - footers:
+        closes: "#22, #37"
+- commits:
+    - footers:
+        change-type: minor
+- commits:
+    - footers:
+        signed-off-by: Tomás Migone <tomas@balena.io>
+- commits:
+    - subject: Add support for local mode
+- commits:
+    - body: null
+- commits:
+    - hash: fe404d98cbfaf021f12fa1a160b0ebe151d8e6b5
+- commits:
+    - author: Tomás Migone
+- commits:
+    - footers:
+        change-type: patch
+- commits:
+    - footers:
+        signed-off-by: Tomás Migone <tomas@balena.io>
+- commits:
+    - subject: Update README.md
+- commits:
+    - body: null
+- commits:
+    - hash: ce2408be0ebf1be3f74ee0d0e50ca8177e81c831
+- commits:
+    - author: Tomás Migone
+- commits:
+    - footers:
+        change-type: patch
+- commits:
+    - footers:
+        signed-off-by: Tomás Migone <tomas@balena.io>
+- commits:
+    - subject: Update README.md
+- commits:
+    - body: null
+- commits:
+    - hash: 6b795c046d156221635f9992dbc6be6b410c9cef
+- commits:
+    - author: Phil Wilson
+- commits:
+    - subject: Merge branch 'support-local-mode' of
+        https://github.com/balenablocks/connector into support-local-mode
+- commits:
+    - body: null
+- commits:
+    - hash: cf8d969c48b064a2f8b054292f6577d8146cafe0
+- commits:
+    - author: Nutchanon Ninyawee
+- commits:
+    - subject: "fix telegraf: not found"
+- commits:
+    - body: "/app/entry.sh: line 27: exec: telegraf: not found"
+- version: 0.0.5
+- date: 2021-06-15T13:15:00Z
+- commits:
+    - hash: b4e3b6b5e01a1dce3616e3b740e1849851b4f673
+- commits:
+    - author: Phil Wilson
+- commits:
+    - footers:
+        change-type: patch
+- commits:
+    - footers:
+        signed-off-by: Phil Wilson <phil@balena.io>
+- commits:
+    - subject: Add MQTT strings setting
+- commits:
+    - body: null
+- version: 0.0.4
+- date: 2021-05-11T09:39:23Z
+- commits:
+    - hash: 8dcb9a2a90b39823776d5cf9360c0dd82583e8d0
+- commits:
+    - author: Phil Wilson
+- commits:
+    - footers:
+        change-type: patch
+- commits:
+    - footers:
+        signed-off-by: Phil Wilson <phil@balena.io>
+- commits:
+    - subject: Add manifest, bump telegraf version
+- commits:
+    - body: null
+- commits:
+    - hash: b3a61717fc9979a5e28795c2bbb775fca481eff2
+- commits:
+    - author: Phil Wilson
+- commits:
+    - footers:
+        change-type: patch
+- commits:
+    - footers:
+        signed-off-by: Phil Wilson <phil@balena.io>
+- commits:
+    - subject: readme
+- commits:
+    - body: null
+- version: 0.0.3
+- date: 2021-03-01T14:01:11Z
+- commits:
+    - hash: 1d43be34da61dd8c2278f60b5df6d0afc43f1fc5
+- commits:
+    - author: Tomás Migone
+- commits:
+    - footers:
+        change-type: patch
+- commits:
+    - footers:
+        signed-off-by: Tomás Migone <tomas@balena.io>
+- commits:
+    - subject: "meta: run versionist to update balena.yml version"
+- commits:
+    - body: null
+- version: 0.0.2
+- date: 2021-02-25T12:43:58Z
+- commits:
+    - hash: f20f5fa4ac2b7f429a63bfdd11e95c3685b6624c
+- commits:
+    - author: Tomás Migone
+- commits:
+    - footers:
+        change-type: patch
+- commits:
+    - footers:
+        signed-off-by: Tomás Migone <tomas@balena.io>
+- commits:
+    - subject: "meta: add versionist"
+- commits:
+    - body: null
+- commits:
+    - hash: 3ab00a8f6ba9c3724f294abc970dd24c98cdba4f
+- commits:
+    - author: Phil Wilson
+- commits:
+    - footers:
+        change-type: patch
+- commits:
+    - footers:
+        signed-off-by: Phil Wilson <phil@balena.io>
+- commits:
+    - subject: hub meta
+- commits:
+    - body: null
+- commits:
+    - hash: e10e419b0423dface57637251dc563792129fe70
+- commits:
+    - author: Phil Wilson
+- commits:
+    - footers:
+        change-type: patch
+- commits:
+    - footers:
+        signed-off-by: Phil Wilson <phil@balena.io>
+- commits:
+    - subject: MQTT output plugin
+- commits:
+    - body: null
+- commits:
+    - hash: cd83c50f6ce5d5b329ba8b45b20ea42faa754e0f
+- commits:
+    - author: Phil Wilson
+- commits:
+    - footers:
+        change-type: patch
+- commits:
+    - footers:
+        signed-off-by: Phil Wilson <phil@balena.io>
+- commits:
+    - subject: fix
+- commits:
+    - body: null
+- commits:
+    - hash: 61fd47bf856d592eb3f04534de9646d6ad720673
+- commits:
+    - author: Phil Wilson
+- commits:
+    - footers:
+        change-type: patch
+- commits:
+    - footers:
+        signed-off-by: Phil Wilson <phil@balena.io>
+- commits:
+    - subject: Added topic prefix
+- commits:
+    - body: null
+- commits:
+    - hash: fa801194ed75e25efaeb564f323a384a4e33ca98
+- commits:
+    - author: Chris Crocker-White
+- commits:
+    - footers:
+        change-type: patch
+- commits:
+    - footers:
+        signed-off-by: Chris Crocker-White <chriscw@balena.io>
+- commits:
+    - subject: Handle empty env var, ordering, multi URLs
+- commits:
+    - body: "Fixes #10"
+- commits:
+    - hash: e11d274062b160b744382ceec7e3be2759ac6ae7
+- commits:
+    - author: Phil
+- commits:
+    - subject: Add json_string_fields functionality
+- commits:
+    - body: null
+- commits:
+    - hash: 17c7b7d4f99dd0d1b4e69e3365f5d3bb4429ad95
+- commits:
+    - author: Chris Crocker-White
+- commits:
+    - footers:
+        change-type: patch
+- commits:
+    - footers:
+        signed-off-by: Chris Crocker-White <chriscw@balena.io>
+- commits:
+    - subject: "Add passthrough for ext. HTTP headers fixes #14"
+- commits:
+    - body: null
+- commits:
+    - hash: b281add1554c30ccde699bdbd7adf4ce0afdd6fe
+- commits:
+    - author: Phil
+- commits:
+    - subject: Add HTTP timeout config
+- commits:
+    - body: null
+- commits:
+    - hash: c5d2de434e5425ad586031911b56564ec5a0c815
+- commits:
+    - author: Phil
+- commits:
+    - subject: Fix MQTT data sources
+- commits:
+    - body: null
+- commits:
+    - hash: 2d4c77277a77505038bd375a1f4dd8e14fbb217f
+- commits:
+    - author: Phil
+- commits:
+    - subject: Debug function
+- commits:
+    - body: null
+- commits:
+    - hash: 2b9361ddf313128caa6a0bd86cb177b897fcd2f5
+- commits:
+    - author: Phil
+- commits:
+    - subject: Fixes for bugs raised during initial testing
+- commits:
+    - body: null
+- commits:
+    - hash: a8fb6f75947a4b624121b1e95c9c6f7c15dd7e3f
+- commits:
+    - author: Phil
+- commits:
+    - subject: Pull data source configuration
+- commits:
+    - body: null
+- commits:
+    - hash: 03eba82f66828183b4ee64e2f66ca30ce1c03392
+- commits:
+    - author: Phil Wilson
+- commits:
+    - subject: Merge branch 'master' into PoC
+- commits:
+    - body: null
