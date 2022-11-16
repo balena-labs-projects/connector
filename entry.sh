@@ -4,7 +4,7 @@ set -e
 # Run balena base image entrypoint script
 /usr/bin/entry.sh echo ""
 
-echo "balenaBlocks connector version: $(<VERSION)"
+echo "balenaLabs connector version: $(<VERSION)"
 
 hn=$BALENA_DEVICE_UUID
 hp=$(echo $hn | cut -c1-7)
