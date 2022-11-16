@@ -1,4 +1,4 @@
-PyJWT==2.0.0
+PyJWT==2.4.0
 balena-sdk==11.3.2
 PluginBase
 toml
