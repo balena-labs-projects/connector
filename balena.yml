@@ -2,7 +2,7 @@ name: connector
 description: Intelligently connect data sources with data sinks.
 
 post-provisioning: >-
-  [![balena](https://github.com/balenablocks/connector/actions/workflows/balena.yml/badge.svg)](https://github.com/balenablocks/connector/actions/workflows/balena.yml)
+  [![balena](https://github.com/balena-labs-projects/connector/actions/workflows/balena.yml/badge.svg)](https://github.com/balena-labs-projects/connector/actions/workflows/balena.yml)
 
   ## Usage instructions
 
@@ -10,7 +10,7 @@ post-provisioning: >-
     
     ```
     browser:
-      image: bhcr.io/balenablocks/connector-<arch> # where <arch> is one of aarch64, armv7hf or amd64
+      image: bh.cr/balenalabs/connector-<arch> # where <arch> is one of aarch64, armv7hf or amd64
       restart: always
       labels:
         io.balena.features.balena-api: '1' # necessary to discover services
@@ -24,7 +24,7 @@ post-provisioning: >-
 
     ```
       browser:
-        image: bhcr.io/balenablocks/connector-<arch>/<version>
+        image: bh.cr/balenalabs/connector-<arch>/<version>
         ...
     ```
 version: 1.1.5
@@ -33,11 +33,11 @@ assets:
   repository:
     type: blob.asset
     data:
-      url: 'https://github.com/balenablocks/connector'
+      url: 'https://github.com/balena-labs-projects/connector'
   logo:
     type: blob.asset
     data:
-      url: 'https://raw.githubusercontent.com/balenablocks/connector/master/logo.png'
+      url: 'https://raw.githubusercontent.com/balena-labs-projects/connector/master/logo.png'
 data:
   defaultDeviceType: raspberrypi3
   supportedDeviceTypes:

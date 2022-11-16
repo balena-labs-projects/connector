@@ -1,6 +1,6 @@
 # balena-blocks/connector
 
- [![balena](https://github.com/balenablocks/connector/actions/workflows/balena.yml/badge.svg)](https://github.com/balenablocks/connector/actions/workflows/balena.yml)
+ [![balena](https://github.com/balena-labs-projects/connector/actions/workflows/balena.yml/badge.svg)](https://github.com/balena-labs-projects/connector/actions/workflows/balena.yml)
 
 Intelligently connect data sources with data sinks in block-based balena applications.
 The `connector` block is a docker image that runs [telegraf](https://www.influxdata.com/time-series-platform/telegraf/) and code to find other services running on the device, and intelligently connect them.
@@ -24,7 +24,7 @@ version: '2.1'
 
 services:
   connector:
-    image: bh.cr/balenablocks/connector-<arch>
+    image: bh.cr/balenalabs/connector-<arch>
     restart: always
     labels:
       io.balena.features.balena-api: '1' # necessary to discover services
@@ -54,7 +54,7 @@ services:
 *dockerfile.template*
 
 ```dockerfile
-FROM bh.cr/balenablocks/connector:%%BALENA_ARCH%%
+FROM bh.cr/balenalabs/connector-%%BALENA_ARCH%%
 ```
 
 ## Supported devices
@@ -206,7 +206,7 @@ By default the `connector` block creates a telegraf configuration file from the 
 
 *dockerfile.template*
 ```Dockerfile
-FROM balenablocks/connector:%%BALENA_MACHINE_NAME%%
+FROM bh.cr/balenalabs/connector-%%BALENA_ARCH%%
 
 COPY customTelegraf.conf .
 
