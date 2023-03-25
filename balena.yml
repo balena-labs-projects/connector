@@ -27,7 +27,7 @@ post-provisioning: >-
         image: bh.cr/balenalabs/connector-<arch>/<version>
         ...
     ```
-version: 1.1.6
+version: 1.1.7
 type: sw.application
 assets:
   repository:
