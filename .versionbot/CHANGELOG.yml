@@ -1,4 +1,33 @@
 - commits:
+    - subject: Pin aarch64 base images to match exactly
+      hash: 84beddcdf938a6aafd059ed2e00c396fc9b7566c
+      body: >
+        Match both build stages to same Python version to avoid
+        `ModuleNotFoundError: No module named 'pluginbase'` errors. Use base
+        image version that exists for build and run.
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Alan Boris <alan@balena.io>
+        signed-off-by: Alan Boris <alan@balena.io>
+      author: Alan Boris
+      nested: []
+    - subject: Pin aarch64 base images more specifically
+      hash: 9bdc1a879d4a4dbbb658ab936ba338cc6cd0f4b8
+      body: >
+        Match both build stages to same Python version to avoid
+        `ModuleNotFoundError: No module named 'pluginbase'` errors.
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Alan Boris <alan@balena.io>
+        signed-off-by: Alan Boris <alan@balena.io>
+      author: Alan Boris
+      nested: []
+  version: 1.1.8
+  title: ""
+  date: 2023-03-27T03:22:07.460Z
+- commits:
     - subject: Bump Python SDK version
       hash: 1eb0570dbaf10d1cb8889cf1f96759cd00865e80
       body: |
