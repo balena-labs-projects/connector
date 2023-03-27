@@ -1,4 +1,4 @@
-FROM balenalib/%%BALENA_MACHINE_NAME%%-alpine-python:3.9-build as build  
+FROM balenalib/%%BALENA_MACHINE_NAME%%-alpine-python:3.8.6-build as build  
 
 RUN mkdir /install
 WORKDIR /install
@@ -12,7 +12,7 @@ RUN pip3 install --upgrade pip
 RUN pip3 install --user wheel
 RUN pip3 install --user -r /requirements.txt
 
-FROM balenalib/%%BALENA_MACHINE_NAME%%-alpine-python:3.9-run 
+FROM balenalib/%%BALENA_MACHINE_NAME%%-alpine-python:3.8.6-run 
 COPY --from=build /root/.local /root/.local
 ENV PATH=/root/.local/bin:$PATH
 
