@@ -13,7 +13,7 @@ def invoke(services):
 
 def getConfigSection():
     # https://github.com/influxdata/telegraf/blob/master/docs/DATA_FORMATS_INPUT.md
-    format = os.environ.get('MQTT_DATA_FORMAT') or "json"
+    data_format = os.environ.get('MQTT_DATA_FORMAT') or "json"
     
     output = """
 [[inputs.mqtt_consumer]]
@@ -23,8 +23,8 @@ topics = [
     "balena/#"
 ]
 
-data_format = "{format}"
-""".format(format=format)
+data_format = "{data_format}"
+""".format(data_format=data_format)
 
     stringFields = os.environ.get('MQTT_INPUT_STRINGS_FIELDS')
     if(stringFields is not None):
